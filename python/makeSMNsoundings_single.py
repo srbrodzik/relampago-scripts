@@ -33,6 +33,7 @@ gifDir = baseDir+'/gifs'
 ftpCatalogServer = 'catalog.eol.ucar.edu'
 ftpCatalogUser = 'anonymous'
 catalogDestDir = '/pub/incoming/catalog/relampago'
+homeDir = os.getenv('HOME')
 
 # make day directory
 localDayDir = os.path.join(targetDir, dateStr)
@@ -44,7 +45,8 @@ if debug:
 # Create sounding
 if debug:
     print >>sys.stderr, "  creating skewt plot"
-cmd = 'python -W ignore /home/storm/brodzik/python/brody/skewplot_relampago.py --filepath . --outpath . --format '+sndgExt
+#cmd = 'python -W ignore /home/storm/brodzik/python/brody/skewplot_relampago.py --filepath . --outpath . --format '+sndgExt
+cmd = 'python -W ignore '+homeDir+'/git/relampago-scripts/python/skewplot_relampago.py --filepath . --outpath . --format '+sndgExt
 if debug:
     print >>sys.stderr, " cmd = ",cmd                        
 os.system(cmd)

@@ -23,6 +23,7 @@ sites = ['COR','MDZ','SIS','VMRS']
 ftpCatalogServer = 'catalog.eol.ucar.edu'
 ftpCatalogUser = 'anonymous'
 catalogDestDir = '/pub/incoming/catalog/relampago'
+homeDir = os.getenv('HOME')
 
 # check to make sure tmpDir exists
 if not os.path.exists(tmpDir):
@@ -96,7 +97,8 @@ for i in range(0,len(sites)):
                 print >>sys.stderr, "   file = ", file
             # create skewt
             fileFullPath = sourceDir+'/'+file
-            cmd = 'python -W ignore /home/storm/brodzik/python/brody/skewplot_relampago.py --file '+fileFullPath+' --outpath '+sourceDir+' --format lst'
+            #cmd = 'python -W ignore /home/storm/brodzik/python/brody/skewplot_relampago.py --file '+fileFullPath+' --outpath '+sourceDir+' --format lst'
+            cmd = 'python -W ignore '+homeDir+'/git/relampago-scripts/python/skewplot_relampago.py --file '+fileFullPath+' --outpath '+sourceDir+' --format lst'
             if debug:
                 print sys.stderr, "   cmd = ", cmd
             os.system(cmd)
